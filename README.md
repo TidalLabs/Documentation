@@ -9,7 +9,6 @@ delivery and interaction.
 
 
 ## Before you start
--------------------
 
 ### Channels
 
@@ -33,7 +32,6 @@ If, however, you prefer more user friendly tools, we recommend
 
 
 ## Core Concepts
-----------------
 
 ### Contexts
 
@@ -80,7 +78,6 @@ token and a channel key for channel-specific actions.
 
 
 ## Authentication
------------------
 
 The Tidal API uses OAuth 2.0. The exact implementation and grant type depend on
 the [context](#contexts).
@@ -110,15 +107,15 @@ Authorization: Bearer <Your Token>
 The *channel/management* context provides a [resource owner password
 credentials](http://tools.ietf.org/html/rfc6749#section-4.3) grant type
 interface at `/v1/channel/auth/token`. POST the following parameters to this
-endpoint:
+endpoint.
 
 Parameter 	| Value 					| Description
-----------------------------------------------------------------------------------------------------------------------------
+------------|-----------------|-------------
 grant_type	| "password"					| Indicates ROPC grant.
 client_id	| "thirdparty"					| Indicates that you're a third-party client.
 username	| Email address of the authenticating admin.	| Note that the user must have admin rights to this channel.
 password	| Password of the authenticating admin.		| The admin's password.
-----------------------------------------------------------------------------------------------------------------------------
+
 
 The *user* context implements an [authorization code
 grant](http://tools.ietf.org/html/rfc6749#section-4.1). Details TBD.
@@ -130,7 +127,6 @@ header.
 
 
 ## API Responses
-----------------
 
 This API is fully JSON -- there are no plans to ever support XML or any other
 formats.
