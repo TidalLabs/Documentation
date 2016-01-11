@@ -14,11 +14,14 @@ Table of Contents
   - Channels
   - Queues
   - Caching
+  - QueryFilter Pattern
+  - Presenter Pattern
 - Dashboard Themes
   - Overview
   - Page and Widget Builder Helper
   - Form Builder Helper
   - Table Builder Helper
+  - Contexts Pattern
   - Custom API
 - Frontend Themes
   - Overview
