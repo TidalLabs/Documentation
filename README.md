@@ -27,6 +27,7 @@ Table of Contents
   - Overview
 - DevOps, Development, and Deployment
   - Overview
+  - [Using the Tidal DevBox](./DevOps-Using-DevBox.md)
 
   
 Introduction to the Tidal Application Platform
