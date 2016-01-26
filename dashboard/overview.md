@@ -65,32 +65,27 @@ creating and returning a view instance.
 
 ## Simple View File
 ```
-<div class="container">
-	<div class="row">
-		<div class="<?=($_REQUEST['show-sidebar'] ? 'span8' : 'span12')?> pane">
-			<?= View::factory('/builder/widget')
-					->set([
+<?php
+// create a simple page with two columns
+echo View::factory('/builder/page/basic')
+    // left column is main body of page
+    ->set('left', [
+            View::factory('/builder/widget')
+                ->set([
                         'title' => [
                             'icon' => 'fa-user',
-                            'badge' => $count,
                             'cog' => 1,
                             'text' => 'Sample Page'
                         ],
-						'content' => [
-							$page_data
-						],
-					]);
-
-			?>
-
-		</div> <!-- .span12/8 -->
-
-		<div class="span4 sidebar" style="<?=($_REQUEST['show-sidebar'] ? '' : 'display:none')?>">
-				<?=View::factory('helloworld/widgets/sample')?>
-		</div>
-
-	</div>
-</div>
+                        'content' => $page_data
+                    ]
+                )
+        ]
+    )
+    // right column is hideable sidebar
+    ->set('right', [
+        'content' => View::factory('helloworld/widgets/sample'),
+    ]);
 ```
 To match the name given in the plugin, your view file should be at `tidal/application/dashboards/manage/views/helloworld/hello.php`.
 
