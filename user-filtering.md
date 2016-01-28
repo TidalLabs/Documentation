@@ -82,7 +82,8 @@ This tells us that:
 
 This system also supports multiple conditions in a single join.  For instance, if you wanted to find users with a certain number of Instagram followers, but only in cases where the Instagram handle was entered by the user (NOT ones where we guessed at the handle based on the Twitter handle), you might do this:
 
-```   $filtersDefs['users'] = [
+```
+   $filtersDefs['users'] = [
       '_instagram_followers' => [
          'table' => 'user_socials',
          'field' => 'followers_count',
@@ -104,7 +105,8 @@ This is accomplished via interpolation.  Variables for interpolation are declare
 
 For instance, a "Published Post Count" filter for the manage dash might be declared like this:
 
-```   $filtersDefs['users'] = [
+```
+   $filtersDefs['users'] = [
       '_published_posts' => [
          'table' => 'user_stats',
          'field' => 'value',
@@ -125,7 +127,8 @@ We have a small problem with some tables, where numeric values are stored as str
 
 The filter definition for "Published Post Count" that we previously discussed should actually be written as below, to ensure that the ``WHERE`` clause is written as ``WHERE CAST(value as int) > 100`` rather than just ``WHERE value > 100)``, since the latter would return rows where the value is ``'50'``.
 
-```   $filtersDefs['users'] = [
+```
+   $filtersDefs['users'] = [
       '_published_posts' => [
          'table' => 'user_stats',
          'field' => 'value',
@@ -140,7 +143,8 @@ The filter definition for "Published Post Count" that we previously discussed sh
 
 Additionally, Eloquent and PDO are usually effective in casting bound variables when executing a parameterized query, but less so in a ``HAVING`` clause, for some reason.  Since all the values we compare against come through the request as strings, some need to be cast to integers before being bound.  In these cases, we can define a callback in the ``valueCast`` key to cast or otherwise process the incoming value:
 
-```   $filtersDefs['users'] = [
+```
+   $filtersDefs['users'] = [
       '_something' => [
          'table' => 'user_foo',
          'field' => 'bar_stat',
@@ -160,7 +164,8 @@ Sometimes we're looking for an aggregate value.  For instance, in newadmin, we s
 
 To do this, we need to use SQL aggregates.  This is very simple to add to the filter definition:
 
-```   $filtersDefs['users'] = [
+```
+   $filtersDefs['users'] = [
       '_best_social_following' => [
          'table' => 'user_socials',
          'field' => 'followers_count',
@@ -186,7 +191,8 @@ It's worth noting that because of how aggregates work, if we filter by multiple 
 
 Complex filters get added to form definitions in a manner very similar to how simple filters do.  You simply use ``_key_name:comparitor`` and ``_key_name:value`` for the comparitor and value fields.  You may need to use a hidden field with the comparitor type (``'='`` or ``'LIKE'``) for text inputs.  Here are some examples:
 
-```   $formFields = [
+```
+   $formFields = [
       ['label' => '<strong>Twitter Handle</strong>', 'type' => 'text', 'name' => '_twitter_slug:value', 'placeholder' => 'Search...'],
       ['type' => 'hidden', 'name' => '_twitter_slug:comparitor','value' => 'LIKE',],
       ['label' => '<strong>Twitter Following</strong>', 'type' => 'select',
@@ -213,7 +219,8 @@ The RequestHelper class lets you use request data to apply sorting and filtering
 
 Filter definitions need to be read from Kohana config and passed through when instantiating a RequestHelper instance:
 
-```   $reqHelper = RequestHelper::factory(
+```
+   $reqHelper = RequestHelper::factory(
       $request,
       \Tidal\User::class, // The model that we'll be searching for records
       \Gator\Helper\UserHelper::class, // A class that may define custom transformations
