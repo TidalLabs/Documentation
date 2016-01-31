@@ -66,7 +66,20 @@ You will likely have to reclaim ownership of the files that Docker created.
 
 **Windows**: Run `sudo chown -r [YOUR_USERNAME] ~/Tidal`
 
-Step 6: Start and Stop the Tidal Platform
+Step 6: Setup Hosts File
+------------------------
+
+When you open Docker Quickstart Terminal, the terminal welcome message provides you with the IP address of the docker virtual machine. You now need to edit your hosts file to map hostnames to that IP address.
+
+**Mac and Linux:** Edit the /etc/hosts file with privileges, eg `sudo vim /etc/hosts` 
+
+**Windows:** Right-click the Notepad program, select "Run as Administrator", and open the `C:\Windows\System32\drivers\etc\hosts` file.
+
+Add the following line to the hosts file:
+
+    [IP ADDRESS OF DOCKER -- MOST LIKELY 192.168.99.100] gator today.gator today.gator.com birchbox.gator.com details.gator.com drinkwire.gator.com capsuleshow.gator.com kohler.gator.com epicurious.gator.com fashionindie.gator.com lucky.gator.com designfile.gator.com admin.gator.com 
+
+Step 7: Start and Stop the Tidal Platform
 -----------------------------------------
 
 You can now freely start and stop the Tidal Platform with the following commands. 
