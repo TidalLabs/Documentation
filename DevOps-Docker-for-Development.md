@@ -34,17 +34,42 @@ cd ~/Tidal/DevOps/Docker/Swamp
 make install
 ```
 
-**Windows**: (Does not have "make")
+**Windows**: (Does not have "make", so you must run the commands manually)
 ```
 cd ~/Tidal/DevOps/Docker/Swamp
-docker-compose.exe -f docker-compose.dev.yml -f docker-compose.stagrestore.yml up
+docker-compose.exe -f docker-compose.yml -f docker-compose.install.yml run repos
+docker-compose.exe -f docker-compose.yml -f docker-compose.install.yml run stagrestore
 ```
 
-**Note**: It is difficult to tell when this step has finished, because it doesn't exit automatically.
+When this step is complete, you should see new folders in ~/Tidal
 
-When you see that BOTH "swamp_repos_1" and "swamp_stagrestore_1" have exited, this step has completed. Hit **Ctrl-C** to finish the installation.
+Step 5: Reclaim Ownership of Files
+----------------------------------
 
-Step 5: Run the Tidal Platform
-------------------------------
+You will likely have to reclaim ownership of the files that Docker created.
 
-Now that the Tidal SDK is installed, you can start and stop it like so:
+**Mac and Linux**: Run `sudo make own`
+**Windows**: Run `sudo chown -r [YOUR_USERNAME] ~/Tidal`
+
+Step 6: Start and Stop the Tidal Platform
+-----------------------------------------
+
+You can now freely start and stop the Tidal Platform with the following commands. 
+
+Run these commands from `~/Tidal/DevOps/Docker/Swamp`
+
+**To Start:**
+
+    make work
+
+or
+
+    docker-compose up -d
+
+**To Stop:**
+
+    make stopwork
+
+or
+
+    docker-compose stop
