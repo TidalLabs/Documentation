@@ -30,6 +30,7 @@ Table of Contents
 - DevOps, Development, and Deployment
   - Overview
   - [Using the Tidal DevBox](./DevOps-Using-DevBox.md)
+  - [Using Docker for Development](./DevOps-Docker-for-Development.md)
 
   
 Introduction to the Tidal Application Platform
