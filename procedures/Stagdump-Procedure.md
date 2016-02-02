@@ -1,7 +1,7 @@
 1. From mongo1, run the cron-stagdump script
 2. From mongo2, run the stagdump script
 3. Transfer mongo stagdump to dev server /opt/resources
-4. From crawler, run pg_dump -O --exclude-table-data='image*' --exclude-table-data='email*' -h componentdb.rds.aws.tid.al -U thehawk hawking > ~/tidal_component_dev.sql
+4. From crawler, run `pg_dump -O --exclude-table-data='image*' --exclude-table-data='email*' -h componentdb.rds.aws.tid.al -U thehawk hawking > ~/tidal_component_dev.sql`
 5. Transfer tidal_component_dev.sql.gz to /opt/resources
 6. Wipe out a local environment
 7. Run make install locally
